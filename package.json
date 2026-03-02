@@ -1,0 +1,11 @@
+{
+  "name": "hackathon-page",
+  "version": "1.0.0",
+  "description": "魔珐星云黑客松页面",
+  "scripts": {
+    "update-covers": "node update-video-covers.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

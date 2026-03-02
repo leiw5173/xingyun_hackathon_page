@@ -1,10 +1,1837 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX9H1YTVMZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-LX9H1YTVMZ');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>魔珐星云具身智能黑客松</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/logo.png" type="image/png">
+    <title>魔珐星云黑客松</title>
+    <style>
+:root {
+    --primary-color: #00f0ff;
+    --secondary-color: #7000ff;
+    --bg-color: #0a0e17;
+    --card-bg: #151a25;
+    --text-color: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --accent-gradient: linear-gradient(135deg, #00f0ff 0%, #7000ff 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* 防止横向滚动 */
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    padding: 20px 0;
+    background: rgba(10, 14, 23, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 5px;
+    border-radius: 6px;
+}
+
+/* Hero Section */
+.hero {
+    padding: 140px 0 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #050505;
+    /* Banner Image Background */
+    background-image: url('https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/banner.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 14, 23, 0.8); /* Dark overlay to ensure text readability */
+    z-index: 1;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent, var(--bg-color));
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    margin-bottom: 25px;
+    background: linear-gradient(to right, #fff 20%, #00f0ff 40%, #7000ff 60%, #fff 80%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    animation: shine 5s linear infinite;
+    text-shadow: 0 0 40px rgba(112, 0, 255, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.hero .slogan {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-bottom: 50px;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero .date {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    display: inline-block;
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+    backdrop-filter: blur(5px);
+    position: relative;
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.btn {
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary {
+    background: var(--accent-gradient);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(112, 0, 255, 0.4);
+    color: #fff;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background: rgba(0, 240, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Section Common */
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-gradient);
+    margin: 20px auto 0;
+    border-radius: 2px;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.timeline-item {
+    margin-bottom: 40px;
+    position: relative;
+    width: 50%;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 40px;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 40px;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--bg-color);
+    border: 4px solid var(--primary-color);
+    border-radius: 50%;
+    top: 0;
+}
+
+.timeline-item:nth-child(odd)::after {
+    right: -10px;
+}
+
+.timeline-item:nth-child(even)::after {
+    left: -10px;
+}
+
+.timeline-date {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.timeline-content h3 {
+    margin-bottom: 10px;
+}
+
+/* Prizes */
+.prize-section-container {
+    background: linear-gradient(135deg, rgba(20, 20, 30, 0.6) 0%, rgba(30, 30, 50, 0.6) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.prize-section-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(112, 0, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.prize-label {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.prize-number {
+    font-size: 6rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #fff 20%, #00f0ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 50px rgba(0, 240, 255, 0.5);
+    letter-spacing: -2px;
+}
+
+.prize-sub {
+    color: var(--text-color);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.benefits-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.benefit-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px 25px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.benefit-card i {
+    color: var(--primary-color);
+}
+
+.benefit-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.benefit-card.highlight {
+    background: rgba(112, 0, 255, 0.2);
+    border-color: rgba(112, 0, 255, 0.5);
+    box-shadow: 0 0 15px rgba(112, 0, 255, 0.2);
+}
+
+.benefit-card.highlight i {
+    color: #fff;
+}
+
+.benefit-card.highlight span {
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Prize Breakdown */
+.prize-breakdown {
+    margin-top: 50px;
+    text-align: left;
+}
+
+.breakdown-section {
+    margin-bottom: 40px;
+}
+
+.breakdown-section h4 {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-left: 3px solid var(--primary-color);
+    padding-left: 15px;
+}
+
+.prize-cards-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.prize-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s;
+}
+
+.prize-card:hover {
+    transform: translateY(-5px);
+}
+
+.prize-card.gold { border-top: 3px solid #FFD700; background: linear-gradient(to bottom, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.03)); }
+.prize-card.silver { border-top: 3px solid #C0C0C0; background: linear-gradient(to bottom, rgba(192, 192, 192, 0.1), rgba(255, 255, 255, 0.03)); }
+.prize-card.bronze { border-top: 3px solid #CD7F32; background: linear-gradient(to bottom, rgba(205, 127, 50, 0.1), rgba(255, 255, 255, 0.03)); }
+
+.prize-card.gold .prize-icon { color: #FFD700; }
+.prize-card.silver .prize-icon { color: #C0C0C0; }
+.prize-card.bronze .prize-icon { color: #CD7F32; }
+
+.prize-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.prize-name {
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.prize-money {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.prize-benefits {
+    margin: 10px 0;
+    font-size: 0.85rem;
+    color: #b0b0b0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 0;
+}
+
+.benefit-item {
+    margin-bottom: 4px;
+}
+
+.benefit-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Tooltip Styles */
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+    margin-left: 5px;
+    color: var(--primary-color);
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: max-content;
+    min-width: 120px;
+    background-color: rgba(10, 14, 23, 0.95);
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 8px 12px;
+    position: absolute;
+    z-index: 100;
+    bottom: 140%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    font-size: 0.8rem;
+    font-weight: normal;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
+    pointer-events: none;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--primary-color) transparent transparent transparent;
+}
+
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.tooltip-text.wide-tooltip {
+    width: 220px;
+    padding: 0;
+    bottom: 130%;
+    background-color: #fff; /* Ensure white background for the image card */
+}
+
+.tooltip-text.wide-tooltip img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px; /* Slightly less than container to fit inside border if needed, or match */
+}
+
+.prize-count {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Special Prizes */
+.special-prizes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.special-prize-item {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sp-header {
+    padding: 10px 15px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.high-value .sp-header { background: rgba(0, 240, 255, 0.2); color: #00f0ff; }
+.potential .sp-header { background: rgba(112, 0, 255, 0.2); color: #b380ff; }
+
+.sp-content {
+    padding: 0;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.sp-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.3s;
+}
+
+.sp-row:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.sp-row:last-child {
+    border-bottom: none;
+}
+
+.sp-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sp-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 240, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.sp-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.15rem;
+}
+
+.sp-right-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .sp-right-content {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+    }
+}
+
+.sp-prize-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: max-content;
+}
+
+.sp-money {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    
+    /* Gold Highlight Style */
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    color: #ffd700;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.15);
+}
+
+.sp-count-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.sp-benefits-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.sp-benefit-tag {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sp-benefit-tag.highlight {
+    background: linear-gradient(90deg, rgba(0, 240, 255, 0.15), rgba(0, 240, 255, 0.05));
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    color: #00f0ff;
+    font-weight: 500;
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.15);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sp-benefit-tag.highlight i {
+    font-size: 0.9em;
+}
+
+/* Optimized Track Cards */
+.tracks-section {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+    .tracks-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.track-card {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 35px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s ease;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.track-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(0, 240, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.track-header {
+    margin-bottom: 25px;
+}
+
+.track-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #fff;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.track-slogan {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    margin-top: 8px;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.track-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+}
+
+.track-detail {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: background 0.3s;
+    text-align: left;
+}
+
+.track-detail:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.detail-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.detail-label i {
+    color: #000;
+    background: var(--primary-color);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    margin-right: 0;
+}
+
+/* Style for the second detail block (Assessment) */
+.track-detail:nth-child(2) .detail-label i {
+    background: var(--secondary-color);
+    color: #fff;
+}
+
+.track-detail p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin: 0;
+    padding-left: 0;
+    font-size: 0.95rem;
+}
+
+.track-detail-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.track-detail-list li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    position: relative;
+    padding-left: 20px;
+}
+
+.track-detail-list li::before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.2rem;
+    line-height: 1.6rem; /* Match line-height of text roughly */
+    font-weight: bold;
+}
+
+.track-detail-list li strong {
+    color: #fff;
+}
+
+/* Requirements & Judging */
+.req-grid, .judging-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.req-item, .judge-item {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.judge-item {
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.judge-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 240, 255, 0.3);
+}
+
+.judge-item h3 {
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.judge-item p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: justify;
+    padding: 0 10px;
+}
+
+.percentage {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #00f0ff, #7000ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.3));
+}
+
+/* FAQ */
+.faq-item {
+    background: var(--card-bg);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-answer {
+    padding: 0 20px 20px;
+    color: var(--text-muted);
+}
+
+/* Group & Contact */
+.group-section {
+    text-align: center;
+    background: var(--card-bg);
+    padding: 60px 0;
+    margin-top: 60px;
+}
+
+.qr-container {
+    background: #fff;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.qr-container img {
+    width: 200px;
+    height: 200px;
+}
+
+/* Footer */
+footer {
+    background: #000;
+    padding: 60px 0 20px;
+    margin-top: 80px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h4 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.footer-links li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.copyright {
+    text-align: center;
+    color: var(--text-muted);
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    /* Header 优化 */
+    header {
+        padding: 12px 0;
+    }
+    
+    .header-content {
+        flex-wrap: wrap;
+        gap: 10px;
+        position: relative;
+    }
+    
+    .logo {
+        font-size: 16px;
+        flex: 1;
+        min-width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    
+    .logo span {
+        display: none; /* 隐藏完整文字 */
+    }
+    
+    .logo img {
+        height: 32px;
+        flex-shrink: 0;
+    }
+    
+    /* 使用伪元素显示缩短的文字 */
+    .logo::after {
+        content: '魔珐星云';
+        display: inline-block;
+        margin-left: 8px;
+    }
+    
+    /* 汉堡菜单按钮 - 手机端显示 */
+    .mobile-menu-toggle {
+        display: flex !important;
+        flex-direction: column;
+        gap: 4px;
+        background: transparent;
+        border: 1px solid var(--primary-color);
+        padding: 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .mobile-menu-toggle span {
+        width: 22px;
+        height: 2px;
+        background: var(--primary-color);
+        transition: all 0.3s;
+        display: block;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    /* 导航菜单改为垂直布局 - 默认隐藏 */
+    .nav-links {
+        width: 100%;
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+        display: none !important; /* 强制隐藏，只有点击汉堡菜单时才显示 */
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        visibility: hidden; /* 双重保险：隐藏可见性 */
+        opacity: 0; /* 双重保险：透明度 */
+        max-height: 0; /* 防止占用空间 */
+        overflow: hidden;
+    }
+    
+    .nav-links.active {
+        display: flex !important; /* 点击后显示 */
+        visibility: visible !important;
+        opacity: 1 !important;
+        max-height: 1000px !important; /* 足够大的值以显示所有内容 */
+    }
+    
+    .nav-links .btn {
+        width: 100%;
+        text-align: center;
+        font-size: 13px;
+        padding: 10px 15px;
+    }
+    
+    /* 下拉菜单在手机端的优化 */
+    .nav-item-dropdown {
+        width: 100%;
+    }
+    
+    .nav-item-dropdown .dropdown-content {
+        position: static;
+        transform: none;
+        margin-top: 8px;
+        width: 100%;
+        background-color: rgba(10, 14, 23, 0.95);
+        border: 1px solid rgba(0, 240, 255, 0.3);
+        display: none;
+    }
+    
+    .nav-item-dropdown .dropdown-content::before {
+        display: none;
+    }
+    
+    .nav-item-dropdown.active .dropdown-content {
+        display: block;
+    }
+    
+    /* 桌面端保持悬停效果 */
+    @media (min-width: 769px) {
+        .nav-item-dropdown:hover .dropdown-content {
+            display: block;
+        }
+    }
+    
+    /* Hero 区域优化 */
+    .hero {
+        padding: 80px 0 60px;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+    
+    .hero .slogan {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        padding: 0 15px;
+        line-height: 1.5;
+    }
+    
+    .hero .date {
+        font-size: 0.9rem;
+        padding: 8px 20px;
+        margin-bottom: 30px;
+    }
+    
+    .cta-group {
+        flex-direction: column;
+        gap: 12px;
+        padding: 0 15px;
+        margin-bottom: 40px;
+    }
+    
+    .cta-group .btn {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    /* Section 优化 */
+    section {
+        padding: 50px 0;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        padding: 0 15px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Timeline 优化 */
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 60px;
+        padding-right: 0;
+        text-align: left;
+    }
+    
+    .timeline-item:nth-child(odd) {
+        left: 0;
+        text-align: left;
+        padding-left: 60px;
+    }
+    
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    
+    .timeline-item::after {
+        left: 10px !important;
+        right: auto !important;
+    }
+    
+    /* 奖品区域优化 */
+    .prize-section-container {
+        padding: 25px 15px;
+    }
+    
+    .prize-number {
+        font-size: 3rem;
+    }
+    
+    .benefits-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .benefit-card {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* 卡片网格优化 */
+    .prize-cards-row,
+    .req-grid,
+    .judging-grid,
+    .special-prizes-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    /* 赛道卡片优化 */
+    .tracks-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .track-card {
+        padding: 20px;
+    }
+    
+    .track-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    /* 获奖项目网格优化 */
+    .award-projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .award-project-card {
+        padding: 20px;
+    }
+    
+    .award-project-name {
+        font-size: 1.1rem;
+    }
+    
+    /* Footer 优化 */
+    footer {
+        padding: 40px 0 20px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* 其他优化 */
+    .prize-breakdown {
+        margin-top: 30px;
+    }
+    
+    .breakdown-section {
+        margin-bottom: 30px;
+    }
+    
+    .breakdown-section h4 {
+        font-size: 1rem;
+    }
+    
+    .sp-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    .sp-right-content {
+        width: 100%;
+        align-items: flex-start !important;
+    }
+    
+    .sp-benefits-row {
+        justify-content: flex-start;
+    }
+    
+    .sp-prize-row {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    /* 确保所有内容不溢出 */
+    .prize-section-container,
+    .award-project-card,
+    .track-card,
+    .req-item,
+    .judge-item,
+    .faq-item {
+        max-width: 100%;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+    
+    /* 图片和视频响应式 */
+    img,
+    video,
+    iframe {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .video-preview-wrap {
+        max-width: 100%;
+    }
+    
+    /* 二维码容器优化 */
+    .qr-container {
+        max-width: 100%;
+    }
+    
+    .qr-container img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* 工具提示在手机端优化 */
+    .tooltip-container {
+        display: inline-block;
+    }
+    
+    /* 日期标签优化 */
+    .hero .date {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+    
+    /* 按钮文字优化 */
+    .btn {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+/* 小屏幕进一步优化 */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero .slogan {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .prize-number {
+        font-size: 2.5rem;
+    }
+    
+    .percentage {
+        font-size: 2.5rem;
+    }
+}
+
+/* Nav Dropdown */
+.nav-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* 汉堡菜单按钮 - 默认隐藏（桌面端） */
+.mobile-menu-toggle {
+    display: none;
+}
+
+.nav-item-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1001;
+    min-width: 180px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.dropdown-content::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 8px 8px 8px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+
+.dropdown-content img {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin: 0 auto 5px;
+    background: white; /* Ensure QR code has white background if transparent */
+}
+
+.dropdown-content p {
+    color: #333;
+    font-size: 12px;
+    margin: 0;
+    font-weight: 500;
+}
+
+.nav-item-dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Ensure buttons in nav look consistent */
+.nav-links .btn {
+    font-size: 14px;
+    padding: 8px 20px;
+}
+
+/* Incubation Banner */
+.incubation-banner {
+    margin-top: 30px;
+    background: linear-gradient(90deg, rgba(112, 0, 255, 0.15), rgba(0, 240, 255, 0.15));
+    border: 1px solid rgba(112, 0, 255, 0.3);
+    border-radius: 15px;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.incubation-banner:hover {
+    background: linear-gradient(90deg, rgba(112, 0, 255, 0.25), rgba(0, 240, 255, 0.25));
+    border-color: rgba(0, 240, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(112, 0, 255, 0.2);
+}
+
+.incubation-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-gradient);
+}
+
+.ib-icon {
+    font-size: 2.5rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(112, 0, 255, 0.3));
+}
+
+.ib-content {
+    flex: 1;
+    text-align: left;
+}
+
+.ib-content h4 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.ib-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* 获奖项目展示 */
+#award-projects {
+    background: linear-gradient(180deg, rgba(0, 240, 255, 0.03) 0%, transparent 100%);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin: -30px 0 50px;
+}
+
+.award-category {
+    margin-bottom: 60px;
+}
+
+.award-category:last-child {
+    margin-bottom: 0;
+}
+
+.award-category-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 25px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(0, 240, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.award-category-title i {
+    color: var(--primary-color);
+}
+
+.award-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+@media (max-width: 1024px) {
+    .award-projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .award-projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.award-project-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.award-project-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: 0 15px 40px rgba(0, 240, 255, 0.15);
+}
+
+.award-project-name {
+    font-size: 1.35rem;
+    color: #fff;
+    margin-bottom: 12px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.award-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.award-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.award-badge.gold {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 193, 7, 0.15));
+    color: #FFD700;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+}
+
+.award-badge.silver {
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.25), rgba(192, 192, 192, 0.1));
+    color: #C0C0C0;
+    border: 1px solid rgba(192, 192, 192, 0.4);
+}
+
+.award-badge.bronze {
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.25), rgba(205, 127, 50, 0.1));
+    color: #CD7F32;
+    border: 1px solid rgba(205, 127, 50, 0.4);
+}
+
+.award-badge.track {
+    background: rgba(0, 240, 255, 0.1);
+    color: var(--primary-color);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+.award-badge.special {
+    background: rgba(112, 0, 255, 0.2);
+    color: #b380ff;
+    border: 1px solid rgba(112, 0, 255, 0.5);
+}
+
+.award-project-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    flex: 1;
+    margin-bottom: 22px;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.award-project-card {
+    text-align: center;
+}
+
+.award-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.award-badges {
+    justify-content: center;
+}
+
+.award-card-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.award-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(0, 240, 255, 0.1);
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    border-radius: 10px;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.award-link-btn:hover {
+    background: rgba(0, 240, 255, 0.2);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+.award-link-btn[href="#"] {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* 视频预览 */
+.video-preview-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.video-preview-wrap:hover {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+.video-preview-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-preview-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(20,20,40,0.6));
+}
+
+.video-preview-placeholder i {
+    font-size: 2.5rem;
+    color: rgba(255,255,255,0.3);
+}
+
+.video-play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.3);
+    transition: background 0.3s;
+}
+
+.video-preview-wrap:hover .video-play-overlay {
+    background: rgba(0,0,0,0.2);
+}
+
+.video-play-overlay i {
+    font-size: 3rem;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+}
+
+.video-preview-wrap:hover .video-play-overlay i {
+    transform: scale(1.1);
+    color: var(--primary-color);
+}
+
+/* 视频模态框 */
+.video-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.video-modal-overlay.active {
+    display: flex;
+}
+
+.video-modal {
+    width: 100%;
+    max-width: 960px;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
+}
+
+.video-modal iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    z-index: 10000;
+}
+
+.video-modal-close:hover {
+    background: rgba(255,255,255,0.2);
+    color: var(--primary-color);
+}
+
+.award-card-links {
+    flex-direction: row;
+    align-items: center;
+}
+
+.award-project-card .video-preview-wrap {
+    margin-bottom: 18px;
+}
+    </style>
     <!-- Font Awesome for icons if needed, using CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -13,15 +1840,21 @@
         <div class="container header-content">
             <div class="logo">
                 <!-- Replace src with actual logo path -->
-                <img src="assets/logo.png" alt="Xmov Logo" onerror="this.style.display='none'; this.parentElement.innerText='Xmov 魔珐星云'">
-                <span>魔珐星云</span>
+                <img src="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/logo.png" alt="Xmov Logo" onerror="this.style.display='none'; this.parentElement.innerText='Xmov 魔珐星云'">
+                <span>魔珐星云具身智能黑客松大赛</span>
             </div>
-            <nav class="nav-links">
+            <button class="mobile-menu-toggle" aria-label="菜单" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-links" id="nav-links">
+                <a href="#award-projects" class="btn btn-outline">获奖项目</a>
                 <a href="https://xingyun3d.com?utm_campaign=daily&utm_source=hackathon" target="_blank" class="btn btn-outline">星云官网</a>
                 <div class="nav-item-dropdown">
                     <button class="btn btn-outline">扫码进群</button>
                     <div class="dropdown-content">
-                        <img src="assets/qrcode.png" alt="进群二维码">
+                        <img src="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/qrcode.png" alt="进群二维码">
                         <p>扫码加入开发者社群</p>
                     </div>
                 </div>
@@ -34,14 +1867,284 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
-                <div class="date">2025/12/8 - 2026/1/31</div>
+                <div class="date">2025/12/18 - 2026/1/31</div>
                 <h1>魔珐星云具身智能黑客松</h1>
                 <p class="slogan">让每一行代码，都驱动一个鲜活的数字生命。</p>
+            </div>
+        </section>
+
+        <!-- 获奖项目展示 -->
+        <section id="award-projects">
+            <div class="container">
+                <h2 class="section-title">获奖项目</h2>
+                <p class="section-subtitle">恭喜以下优秀项目脱颖而出，感谢所有参赛者的精彩创意！</p>
                 
-                <div class="cta-group">
-                    <a href="https://rsjqcmnt5p.feishu.cn/share/base/form/shrcnuyr5DJ52DvihAU25Pm3Txh" target="_blank" class="btn btn-primary">立即报名</a>
-                    <a href="#" class="btn btn-outline">开发者手册</a>
-                    <a href="https://rsjqcmnt5p.feishu.cn/share/base/form/shrcnzRC5qJAeFhtI4p4FvUrwnb" target="_blank" class="btn btn-outline">提交项目</a>
+                <!-- 大屏交互与智能讲解赛道 -->
+                <div class="award-category">
+                    <h3 class="award-category-title"><i class="fas fa-tv"></i> 大屏交互与智能讲解赛道</h3>
+                    <div class="award-projects-grid">
+                        <div class="award-project-card">
+                            <div class="award-card-header">
+                                <h3 class="award-project-name">应急指挥中心数字人交互系统</h3>
+                                <div class="award-badges">
+                                    <span class="award-badge gold"><i class="fas fa-crown"></i> 金奖</span>
+                                </div>
+                            </div>
+                            <div class="video-preview-wrap" data-bvid="BV1uMrSBxEP3" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1uMrSBxEP3.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                            <p class="award-project-desc">融合 Vue 3 大屏与 LLM 智能决策，打造「听得见、想得透、说得出」的数智指挥官。</p>
+                            <div class="award-card-links">
+                                <a href="https://modelscope.cn/studios/FrontYue/ECC_Digital_Human_Interaction_System/files" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                            </div>
+                        </div>
+
+                        <div class="award-project-card">
+                            <div class="award-card-header">
+                                <h3 class="award-project-name">数弈 SenteBI</h3>
+                                <div class="award-badges">
+                                    <span class="award-badge silver"><i class="fas fa-medal"></i> 银奖</span>
+                                </div>
+                            </div>
+                            <div class="video-preview-wrap" data-bvid="BV1iVzmB4ExX" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1iVzmB4ExX.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                            <p class="award-project-desc">上传数据即可 AI 生成专业大屏，数字人实时播报，自然语言完成复杂查询。</p>
+                            <div class="award-card-links">
+                                <a href="https://www.modelscope.cn/studios/lawson19/SenteBI" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                            </div>
+                        </div>
+
+                        <div class="award-project-card">
+                            <div class="award-card-header">
+                                <h3 class="award-project-name">政务服务大厅大屏</h3>
+                                <div class="award-badges">
+                                    <span class="award-badge bronze"><i class="fas fa-medal"></i> 铜奖</span>
+                                </div>
+                            </div>
+                            <div class="video-preview-wrap" data-bvid="BV1hurMBCEAa" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1hurMBCEAa.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                            <p class="award-project-desc">数字人导办员语音引导政务办理全流程，实现「最多问一次」。</p>
+                            <div class="award-card-links">
+                                <a href="https://gitcode.com/m0_68390957/mfxy-gov-service-hall" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 企业级 AI 数字员工赛道 -->
+                <div class="award-category">
+                    <h3 class="award-category-title"><i class="fas fa-briefcase"></i> 企业级 AI 数字员工赛道</h3>
+                    <div class="award-projects-grid">
+                        <div class="award-project-card">
+                            <div class="award-card-header">
+                                <h3 class="award-project-name">PPT 智能讲解系统</h3>
+                                <div class="award-badges">
+                                    <span class="award-badge gold"><i class="fas fa-crown"></i> 金奖</span>
+                                </div>
+                            </div>
+                            <div class="video-preview-wrap" data-bvid="BV1hurMBCENn" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1hurMBCENn.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                            <p class="award-project-desc">上传 PDF 即生成讲解词，数字人播报，支持翻页、形象切换及观众提问。</p>
+                            <div class="award-card-links">
+                                <a href="https://gitcode.com/m0_68390957/mfxy-avatar-ppt" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                            </div>
+                        </div>
+
+                        <div class="award-project-card">
+                            <div class="award-card-header">
+                                <h3 class="award-project-name">企业智能助手</h3>
+                                <div class="award-badges">
+                                    <span class="award-badge silver"><i class="fas fa-medal"></i> 银奖</span>
+                                </div>
+                            </div>
+                            <div class="video-preview-wrap" data-bvid="BV1wmqABBE4D" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1wmqABBE4D.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                            <p class="award-project-desc">智能数字员工，专注 HR 政策解答与 IT 故障报修，提升办公效率。</p>
+                            <div class="award-card-links">
+                                <a href="https://github.com/pickstar-2002/enterprise-assistant" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                            </div>
+                        </div>
+
+                        <div class="award-project-card">
+                            <div class="award-card-header">
+                                <h3 class="award-project-name">PPTalk</h3>
+                                <div class="award-badges">
+                                    <span class="award-badge bronze"><i class="fas fa-medal"></i> 铜奖</span>
+                                </div>
+                            </div>
+                            <div class="video-preview-wrap" data-bvid="BV1oYz2B9E4H" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1oYz2B9E4H.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                            <p class="award-project-desc">PPT 自动讲解并回答观众问题，静态展示升级为智能交互。</p>
+                            <div class="award-card-links">
+                                <a href="https://www.modelscope.cn/datasets/xg12345/PPTalk/file/view/master/README.md?id=172728&status=1" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI 实时交互教育赛道 -->
+                <div class="award-category">
+                    <h3 class="award-category-title"><i class="fas fa-graduation-cap"></i> AI 实时交互教育赛道</h3>
+                    <div class="award-projects-grid">
+                        <div class="award-project-card">
+                            <div class="award-card-header">
+                                <h3 class="award-project-name">魔珐星云数字人教师</h3>
+                                <div class="award-badges">
+                                    <span class="award-badge gold"><i class="fas fa-crown"></i> 金奖</span>
+                                </div>
+                            </div>
+                            <div class="video-preview-wrap" data-bvid="BV1SRzrBPEmu" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1SRzrBPEmu.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                            <p class="award-project-desc">自动化欢迎页与一键初始化，解决多场景实训资源隔离，提供「真人导师」般体验。</p>
+                            <div class="award-card-links">
+                                <a href="https://www.modelscope.cn/studios/Joe2yyo/Magic_Nebula_Digital_Human/" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                            </div>
+                        </div>
+
+                        <div class="award-project-card">
+                            <div class="award-card-header">
+                                <h3 class="award-project-name">基于魔珐星云的 AI 物理课堂</h3>
+                                <div class="award-badges">
+                                    <span class="award-badge silver"><i class="fas fa-medal"></i> 银奖</span>
+                                </div>
+                            </div>
+                            <div class="video-preview-wrap" data-bvid="BV1NLkWBUEzN" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1NLkWBUEzN.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                            <p class="award-project-desc">高中物理 AI 教师，配合板书讲解难题，支持随时打断提问，「补课式」解答。</p>
+                            <div class="award-card-links">
+                                <a href="https://gitcode.com/qq_43711451/physics_tutor_ai" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                            </div>
+                        </div>
+
+                        <div class="award-project-card">
+                            <div class="award-card-header">
+                                <h3 class="award-project-name">历史共学舱</h3>
+                                <div class="award-badges">
+                                    <span class="award-badge bronze"><i class="fas fa-medal"></i> 铜奖</span>
+                                </div>
+                            </div>
+                            <div class="video-preview-wrap" data-bvid="BV1Hqi1BHETN" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1Hqi1BHETN.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                            <p class="award-project-desc">拟真虚拟历史教师，实时讲解、问答互动及学习追踪。</p>
+                            <div class="award-card-links">
+                                <a href="https://modelscope.cn/studios/xiaoxiaofeng910/history_teacher" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI 创意 / 灵感交互赛道 -->
+                <div class="award-category">
+                    <h3 class="award-category-title"><i class="fas fa-lightbulb"></i> AI 创意 / 灵感交互赛道</h3>
+                    <div class="award-projects-grid">
+                        <div class="award-project-card">
+                            <div class="award-card-header">
+                                <h3 class="award-project-name">记忆岛</h3>
+                                <div class="award-badges">
+                                    <span class="award-badge gold"><i class="fas fa-crown"></i> 金奖</span>
+                                </div>
+                            </div>
+                            <div class="video-preview-wrap" data-bvid="BV1mEqPBjEh3" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1mEqPBjEh3.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                            <p class="award-project-desc">AI 记忆守护者，会倾听、珍藏、回溯的沉浸式情感陪伴数字人。</p>
+                            <div class="award-card-links">
+                                <a href="https://modelscope.cn/datasets/xg12345/IslandofMemories" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                            </div>
+                        </div>
+
+                        <div class="award-project-card">
+                            <div class="award-card-header">
+                                <h3 class="award-project-name">灵魂讲述者（Soul Teller）</h3>
+                                <div class="award-badges">
+                                    <span class="award-badge silver"><i class="fas fa-medal"></i> 银奖</span>
+                                </div>
+                            </div>
+                            <div class="video-preview-wrap" data-bvid="BV1MCkMB5EdU" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1MCkMB5EdU.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                            <p class="award-project-desc">AI 交互式叙事，与数字人互动影响剧情走向，沉浸式分支故事体验。</p>
+                            <div class="award-card-links">
+                                <a href="https://github.com/xtdexw/soul-teller" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                            </div>
+                        </div>
+
+                        <div class="award-project-card">
+                            <div class="award-card-header">
+                                <h3 class="award-project-name">AI 众星之书占卜系统</h3>
+                                <div class="award-badges">
+                                    <span class="award-badge bronze"><i class="fas fa-medal"></i> 铜奖</span>
+                                </div>
+                            </div>
+                            <div class="video-preview-wrap" data-bvid="BV1BMqcB4EYb" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1BMqcB4EYb.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                            <p class="award-project-desc">AI 智慧与数字人结合的沉浸式占卜体验。</p>
+                            <div class="award-card-links">
+                                <a href="https://gitcode.com/qq_43711451/fortune_teller_ai" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 专项激励奖 -->
+                <div class="award-category">
+                    <h3 class="award-category-title"><i class="fas fa-star"></i> 专项激励奖</h3>
+                    <div class="award-projects-grid">
+                        <div class="award-project-card">
+                            <div class="award-card-header">
+                                <h3 class="award-project-name">NEXUS 全球供应链 AI 指挥舱</h3>
+                                <div class="award-badges">
+                                    <span class="award-badge special"><i class="fas fa-eye"></i> 最佳视觉体验奖</span>
+                                </div>
+                            </div>
+                            <div class="video-preview-wrap" data-bvid="BV1dBrQBkErn" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1dBrQBkErn.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                        <p class="award-project-desc">生成式 AI 与 3D 可视化指挥舱，Gemini 分析供应链，数字人拟人化汇报。</p>
+                        <div class="award-card-links">
+                            <a href="https://gitcode.com/qq_43711451/global_chain_command_ai" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                        </div>
+                    </div>
+
+                    <div class="award-project-card">
+                        <div class="award-card-header">
+                            <h3 class="award-project-name">AI 伴你「衣食行医」</h3>
+                            <div class="award-badges">
+                                <span class="award-badge special"><i class="fas fa-chart-line"></i> 最具商业价值奖</span>
+                            </div>
+                        </div>
+                            <div class="video-preview-wrap" data-bvid="BV1Y2zDBhECC" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1Y2zDBhECC.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                        <p class="award-project-desc">感知位置、理解意图的 AI 数字人，解决公共空间「迷路、问询难」痛点。</p>
+                        <div class="award-card-links">
+                            <a href="https://github.com/pbw-langwang/AI-accompanies-you-in-clothing-food-housing-transportation-healthcare.git" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                        </div>
+                    </div>
+
+                    <div class="award-project-card">
+                        <div class="award-card-header">
+                            <h3 class="award-project-name">BI 数据讲解</h3>
+                            <div class="award-badges">
+                                <span class="award-badge special"><i class="fas fa-microchip"></i> 最佳技术突破奖</span>
+                            </div>
+                        </div>
+                            <div class="video-preview-wrap" data-bvid="BV12WvxBvETp" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV12WvxBvETp.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                        <p class="award-project-desc">智能 BI 数据讲解，实时解读业务指标与趋势，数据洞察更直观。</p>
+                        <div class="award-card-links">
+                            <a href="https://github.com/pickstar-2002/bi-data-explainer" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                        </div>
+                    </div>
+
+                    <div class="award-project-card">
+                        <div class="award-card-header">
+                            <h3 class="award-project-name">智财云</h3>
+                            <div class="award-badges">
+                                <span class="award-badge special"><i class="fas fa-mouse-pointer"></i> 最佳交互设计奖</span>
+                            </div>
+                        </div>
+                            <div class="video-preview-wrap" data-bvid="BV1qxzyBDEEG" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1qxzyBDEEG.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                        <p class="award-project-desc">「看得见、听得懂、算得准」的企业专属 AI 数字 CFO。</p>
+                        <div class="award-card-links">
+                            <a href="https://github.com/Astronia-A/AIFinanceSystem" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                        </div>
+                    </div>
+
+                    <div class="award-project-card">
+                        <div class="award-card-header">
+                            <h3 class="award-project-name">企业展厅数字人讲解系统</h3>
+                            <div class="award-badges">
+                                <span class="award-badge special"><i class="fas fa-rocket"></i> 星云潜力新星奖</span>
+                            </div>
+                        </div>
+                            <div class="video-preview-wrap" data-bvid="BV1NwikBUEmf" data-cover="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/covers/BV1NwikBUEmf.jpg"><div class="video-preview-placeholder"><i class="fas fa-video"></i></div><img src="" alt="" style="display:none"><div class="video-play-overlay"><i class="fas fa-play-circle"></i></div></div>
+                        <p class="award-project-desc">数据大屏与 AI 数字人结合，点击唤起虚拟讲解员，支持实时问答。</p>
+                        <div class="award-card-links">
+                            <a href="https://gitcode.com/Mrxiao_bo/mofa-large-screen" target="_blank" rel="noopener" class="award-link-btn"><i class="fas fa-code"></i> 代码</a>
+                        </div>
+                    </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -61,11 +2164,35 @@
                     <div class="benefits-container">
                         <div class="benefit-card">
                             <i class="fas fa-cloud"></i>
-                            <span>魔珐星云平台使用额度</span>
+                            <span>
+                                魔珐星云平台使用额度
+                                <span class="tooltip-container">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span class="tooltip-text">非商业免费使用额度</span>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="benefit-card">
+                            <i class="fas fa-cube"></i>
+                            <span>
+                                桌面全息仓
+                                <span class="tooltip-container">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span class="tooltip-text wide-tooltip">
+                                        <img src="https://media.xingyun3d.com/xingyun3d/www/apps/apps-9.jpg?x-oss-process=image/format,webp" alt="桌面全息仓示例">
+                                    </span>
+                                </span>
+                            </span>
                         </div>
                         <div class="benefit-card highlight">
                             <i class="fas fa-rocket"></i>
-                            <span>后续项目孵化机会</span>
+                            <span>
+                                后续项目孵化机会
+                                <span class="tooltip-container">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span class="tooltip-text">资源对接，技术孵化，市场推广</span>
+                                </span>
+                            </span>
                         </div>
                     </div>
 
@@ -76,20 +2203,29 @@
                                 <div class="prize-card gold">
                                     <div class="prize-icon"><i class="fas fa-crown"></i></div>
                                     <div class="prize-name">赛道金奖</div>
-                                    <div class="prize-money">¥8,000</div>
-                                    <div class="prize-count">每赛道 1 名</div>
+                                    <div class="prize-money">¥20,000</div>
+                                    <div class="prize-benefits">
+                                        <div class="benefit-item">6个月星云平台权益</div>
+                                    </div>
+                                    <div class="prize-count">4个赛道平分</div>
                                 </div>
                                 <div class="prize-card silver">
                                     <div class="prize-icon"><i class="fas fa-medal"></i></div>
                                     <div class="prize-name">赛道银奖</div>
-                                    <div class="prize-money">¥4,000</div>
-                                    <div class="prize-count">每赛道 1 名</div>
+                                    <div class="prize-money">¥16,000</div>
+                                    <div class="prize-benefits">
+                                        <div class="benefit-item">3个月星云平台权益</div>
+                                    </div>
+                                    <div class="prize-count">4个赛道平分</div>
                                 </div>
                                 <div class="prize-card bronze">
                                     <div class="prize-icon"><i class="fas fa-medal"></i></div>
                                     <div class="prize-name">赛道铜奖</div>
-                                    <div class="prize-money">¥2,000</div>
-                                    <div class="prize-count">每赛道 1 名</div>
+                                    <div class="prize-money">¥10,000</div>
+                                    <div class="prize-benefits">
+                                        <div class="benefit-item">2个月星云平台权益</div>
+                                    </div>
+                                    <div class="prize-count">4个赛道平分</div>
                                 </div>
                             </div>
                         </div>
@@ -99,25 +2235,89 @@
                             <div class="special-prizes-grid">
                                 <div class="special-prize-item">
                                     <div class="sp-content">
+                                        <!-- Item 1 -->
                                         <div class="sp-row">
-                                            <span class="sp-name">最具商业价值奖</span>
-                                            <span class="sp-money">¥2,000</span>
-                                            <span class="sp-count">1名</span>
+                                            <div class="sp-left">
+                                                <div class="sp-icon"><i class="fas fa-chart-line"></i></div>
+                                                <span class="sp-name">最具商业价值奖</span>
+                                            </div>
+                                            <div class="sp-right-content">
+                                                <div class="sp-benefits-row">
+                                                    <span class="sp-benefit-tag">1个月星云平台权益</span>
+                                                    <span class="sp-benefit-tag highlight"><i class="fas fa-cube"></i> 桌面全息仓 x 1</span>
+                                                </div>
+                                                <div class="sp-prize-row">
+                                                    <span class="sp-money">¥1,000</span>
+                                                    <span class="sp-count-badge">1名</span>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <!-- Item 2 -->
                                         <div class="sp-row">
-                                            <span class="sp-name">最佳技术突破奖</span>
-                                            <span class="sp-money">¥2,000</span>
-                                            <span class="sp-count">1名</span>
+                                            <div class="sp-left">
+                                                <div class="sp-icon"><i class="fas fa-microchip"></i></div>
+                                                <span class="sp-name">最佳技术突破奖</span>
+                                            </div>
+                                            <div class="sp-right-content">
+                                                <div class="sp-benefits-row">
+                                                    <span class="sp-benefit-tag">1个月星云平台权益</span>
+                                                    <span class="sp-benefit-tag highlight"><i class="fas fa-cube"></i> 桌面全息仓 x 1</span>
+                                                </div>
+                                                <div class="sp-prize-row">
+                                                    <span class="sp-money">¥1,000</span>
+                                                    <span class="sp-count-badge">1名</span>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <!-- Item 3 -->
                                         <div class="sp-row">
-                                            <span class="sp-name">最佳设计体验奖</span>
-                                            <span class="sp-money">¥1,000</span>
-                                            <span class="sp-count">1名</span>
+                                            <div class="sp-left">
+                                                <div class="sp-icon"><i class="fas fa-eye"></i></div>
+                                                <span class="sp-name">最佳视觉体验奖</span>
+                                            </div>
+                                            <div class="sp-right-content">
+                                                <div class="sp-benefits-row">
+                                                    <span class="sp-benefit-tag">1个月星云平台权益</span>
+                                                    <span class="sp-benefit-tag highlight"><i class="fas fa-cube"></i> 桌面全息仓 x 1</span>
+                                                </div>
+                                                <div class="sp-prize-row">
+                                                    <span class="sp-money">¥1,000</span>
+                                                    <span class="sp-count-badge">1名</span>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <!-- Item 4 -->
                                         <div class="sp-row">
-                                            <span class="sp-name">星云潜力奖</span>
-                                            <span class="sp-money">¥1,000</span>
-                                            <span class="sp-count">3名</span>
+                                            <div class="sp-left">
+                                                <div class="sp-icon"><i class="fas fa-hand-pointer"></i></div>
+                                                <span class="sp-name">最佳交互设计奖</span>
+                                            </div>
+                                            <div class="sp-right-content">
+                                                <div class="sp-benefits-row">
+                                                    <span class="sp-benefit-tag">1个月星云平台权益</span>
+                                                    <span class="sp-benefit-tag highlight"><i class="fas fa-cube"></i> 桌面全息仓 x 1</span>
+                                                </div>
+                                                <div class="sp-prize-row">
+                                                    <span class="sp-money">¥1,000</span>
+                                                    <span class="sp-count-badge">1名</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Item 5 -->
+                                        <div class="sp-row">
+                                            <div class="sp-left">
+                                                <div class="sp-icon"><i class="fas fa-star"></i></div>
+                                                <span class="sp-name">星云潜力新星奖</span>
+                                            </div>
+                                            <div class="sp-right-content">
+                                                <div class="sp-benefits-row">
+                                                    <span class="sp-benefit-tag">1个月星云平台权益</span>
+                                                    <span class="sp-benefit-tag highlight"><i class="fas fa-cube"></i> 桌面全息仓 x 1</span>
+                                                </div>
+                                                <div class="sp-prize-row">
+                                                    <span class="sp-count-badge">1名</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -130,49 +2330,118 @@
                         <div class="tracks-grid">
                             <div class="track-card">
                                 <div class="track-header">
+                                    <h3>大屏交互与智能讲解赛道</h3>
+                                    <p class="track-slogan">“用具身智能数字人点亮每一块屏幕”</p>
+                                </div>
+                                <div class="track-body">
+                                    <div class="track-detail">
+                                        <span class="detail-label"><i class="fas fa-lightbulb"></i> 核心理念</span>
+                                        <p>星云让每块屏幕都能拥有一个“有形象，会交互，能办事”的具身智能数字人，让每块屏幕升级为具身智能终端。</p>
+                                    </div>
+                                    <div class="track-detail">
+                                        <span class="detail-label"><i class="fas fa-compass"></i> 可选方向（不限于以下举例）</span>
+                                        <ul class="track-detail-list">
+                                            <li><strong>政务大厅办事指引：</strong>精准政策咨询与流程引导。</li>
+                                            <li><strong>城市展厅讲解：</strong>生动讲述城市历史与未来规划。</li>
+                                            <li><strong>企业展厅接待：</strong>专业介绍企业文化与核心产品。</li>
+                                            <li><strong>BI 数据讲解：</strong>实时解读业务指标与趋势。</li>
+                                            <li><strong>指挥中心：</strong>实时播报预警，辅助高效决策。</li>
+                                        </ul>
+                                    </div>
+                                    <div class="track-detail">
+                                        <span class="detail-label"><i class="fas fa-exclamation-circle"></i> 要求</span>
+                                        <p>须贴合线下展厅或者服务类型的场景：</p>
+                                        <ul class="track-detail-list">
+                                            <li><strong>线下展厅：</strong>需结合 BI 或者 IOC 大屏画面呈现数字人交互效果。</li>
+                                            <li><strong>线下服务类：</strong>需通过数字人交互完成一个业务办理流程。</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="track-card">
+                                <div class="track-header">
                                     <h3>AI 实时交互教育赛道</h3>
-                                    <p class="track-slogan">“重塑师生对话，定义未来课堂”</p>
+                                    <p class="track-slogan">“新一代课程，不是视频，也不是书，而是一个会陪你学习的 AI 老师”</p>
                                 </div>
                                 <div class="track-body">
                                     <div class="track-detail">
-                                        <span class="detail-label"><i class="fas fa-bullseye"></i> 针对痛点</span>
-                                        <p>解决传统网课缺乏互动的痛点，打造“会说话的老师”。</p>
+                                        <span class="detail-label"><i class="fas fa-lightbulb"></i> 核心理念</span>
+                                        <p>星云让 AI 拥有“老师的身体与对话能力”，把学习从“看内容”升级为 一个 能实时对话、能引导学习、能陪练 的 AI老师。</p>
                                     </div>
                                     <div class="track-detail">
-                                        <span class="detail-label"><i class="fas fa-clipboard-check"></i> 重点考核</span>
-                                        <p>AI 是否真的像老师一样引导？是否有情感反馈？延迟是否够低？</p>
+                                        <span class="detail-label"><i class="fas fa-compass"></i> 可选方向</span>
+                                        <ul class="track-detail-list">
+                                            <li><strong>口语陪练：</strong>沉浸式 1对1 语言环境与发音练习。</li>
+                                            <li><strong>学科辅导：</strong>直观讲解定理，引导独立思考。</li>
+                                            <li><strong>学习规划（督学）：</strong>定制计划，实时追踪与鼓励。</li>
+                                            <li><strong>校园咨询：</strong>7x24小时解答校园高频疑问。</li>
+                                            <li><strong>择业顾问：</strong>分析职业路径，提供模拟面试辅导。</li>
+                                        </ul>
+                                    </div>
+                                    <div class="track-detail">
+                                        <span class="detail-label"><i class="fas fa-exclamation-circle"></i> 要求</span>
+                                        <p>须贴合教育培训场景：</p>
+                                        <ul class="track-detail-list">
+                                            <li>实现数字人教育教学、培训、考核、评测中一个或多个环节的demo实现。</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="track-card">
                                 <div class="track-header">
-                                    <h3>企业级 AI 服务专家赛道</h3>
-                                    <p class="track-slogan">“7x24小时在线，不仅是客服，更是专家”</p>
+                                    <h3>企业级 AI 数字员工赛道</h3>
+                                    <p class="track-slogan">“让 AI 数字人成为企业里的一个岗位”</p>
                                 </div>
                                 <div class="track-body">
                                     <div class="track-detail">
-                                        <span class="detail-label"><i class="fas fa-bullseye"></i> 针对痛点</span>
-                                        <p>企业降本增效，从“人工应答”转向“智能顾问”。</p>
+                                        <span class="detail-label"><i class="fas fa-lightbulb"></i> 核心理念</span>
+                                        <p>星云让 AI 拥有岗位身份和形象，用数字人承载企业知识、流程和服务能力。AI 不再只是聊天窗口，而是有形象、有职责、有知识边界的“数字员工”。</p>
                                     </div>
                                     <div class="track-detail">
-                                        <span class="detail-label"><i class="fas fa-clipboard-check"></i> 重点考核</span>
-                                        <p>接入结构化知识库，回答是否幻觉少？流程引导是否闭环？</p>
+                                        <span class="detail-label"><i class="fas fa-compass"></i> 可选方向（企业中任何岗位）</span>
+                                        <ul class="track-detail-list">
+                                            <li><strong>数字人名片：</strong>把官网变成一个企业数字人名片。</li>
+                                            <li><strong>数字人 PPT：</strong>把PPT变成一个能讲解能回答的数字人PPT。</li>
+                                            <li><strong>产品售前顾问：</strong>专业导购咨询，助力销售转化。</li>
+                                            <li><strong>健康咨询助手：</strong>提供日常健康建议与调理咨询。</li>
+                                            <li><strong>HR / IT 助手：</strong>自动解答政策疑问与故障报修。</li>
+                                        </ul>
+                                    </div>
+                                    <div class="track-detail">
+                                        <span class="detail-label"><i class="fas fa-exclamation-circle"></i> 要求</span>
+                                        <p>须贴合企业AI服务专家的场景：</p>
+                                        <ul class="track-detail-list">
+                                            <li>通过数字人结合企业具体业务场景，结合RAG、Multi-Agent等框架构建高准确度、低幻觉率的应用。</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="track-card">
                                 <div class="track-header">
-                                    <h3>政务与展厅智能讲解赛道</h3>
-                                    <p class="track-slogan">“让数据开口说话，让流程一目了然”</p>
+                                    <h3>AI 创意 / 灵感交互赛道</h3>
+                                    <p class="track-slogan">“星云，让大模型拥有身体，走进每一块屏幕”</p>
                                 </div>
                                 <div class="track-body">
                                     <div class="track-detail">
-                                        <span class="detail-label"><i class="fas fa-bullseye"></i> 针对痛点</span>
-                                        <p>解决大屏数据冰冷、展厅讲解员紧缺的问题。</p>
+                                        <span class="detail-label"><i class="fas fa-lightbulb"></i> 核心理念</span>
+                                        <p>开发者可以自由探索：如果 AI 拥有身体、形象和实时交互能力，还能创造出哪些以前不存在的体验？</p>
                                     </div>
                                     <div class="track-detail">
-                                        <span class="detail-label"><i class="fas fa-clipboard-check"></i> 重点考核</span>
-                                        <p>数字人动作与大屏内容的配合度（如手指图表时语音是否同步）。</p>
+                                        <span class="detail-label"><i class="fas fa-compass"></i> 可选方向</span>
+                                        <ul class="track-detail-list">
+                                            <li><strong>创意内容与叙事：</strong>把一本书变成会讲故事、会即兴互动的数字人。</li>
+                                            <li><strong>IP / 世界观探索：</strong>有性格、记忆和互动风格的角色设定。</li>
+                                            <li><strong>情绪陪伴数字人：</strong>全天候温暖陪伴与深度情感共鸣。</li>
+                                            <li><strong>智能 DM (主持人)：</strong>熟记剧本，营造氛围，推动剧情。</li>
+                                            <li><strong>AI 占卜师：</strong>神秘学风格，提供卡牌解读与心理按摩。</li>
+                                        </ul>
+                                    </div>
+                                    <div class="track-detail">
+                                        <span class="detail-label"><i class="fas fa-exclamation-circle"></i> 要求</span>
+                                        <p>面向C端用户，新颖、有趣：</p>
+                                        <ul class="track-detail-list">
+                                            <li>探索数字人在C端的应用场景，构建一个新颖、有趣、令人眼前一亮的demo。</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -191,14 +2460,14 @@
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <div class="timeline-date">2025.12.8 - 2026.1.11</div>
+                            <div class="timeline-date">2025.12.18 - 2026.1.12</div>
                             <h3>报名及创意构想</h3>
                             <p>开发者报名及创意构想书提交</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <div class="timeline-date">2025.12.15 - 2026.1.25</div>
+                            <div class="timeline-date">2025.12.22 - 2026.1.25</div>
                             <h3>项目开发</h3>
                             <p>开发者项目提交</p>
                         </div>
@@ -318,18 +2587,26 @@
                 <h2>加入开发者社群</h2>
                 <p>扫码进群，获取更多资讯与支持</p>
                 <div class="qr-container">
-                    <img src="assets/qrcode.png" alt="进群二维码" onerror="this.src='https://via.placeholder.com/200x200?text=QR+Code'">
+                    <img src="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/qrcode.png" alt="进群二维码" onerror="this.src='https://via.placeholder.com/200x200?text=QR+Code'">
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- 视频播放模态框 -->
+    <div id="video-modal" class="video-modal-overlay">
+        <button id="video-modal-close" class="video-modal-close" aria-label="关闭"><i class="fas fa-times"></i></button>
+        <div class="video-modal">
+            <iframe id="video-modal-iframe" src="" allowfullscreen></iframe>
+        </div>
+    </div>
 
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="logo">
-                        <img src="assets/logo.png" alt="Xmov Logo" style="height: 30px;" onerror="this.style.display='none'; this.parentElement.innerText='Xmov 魔珐星云'">
+                        <img src="https://public-xingyun3d.oss-cn-shanghai.aliyuncs.com/hackathon/logo.png" alt="Xmov Logo" style="height: 30px;" onerror="this.style.display='none'; this.parentElement.innerText='Xmov 魔珐星云'">
                         <span>魔珐星云</span>
                     </div>
                 </div>
@@ -338,7 +2615,7 @@
                     <ul class="footer-links">
                         <li><a href="https://xingyun3d.com?utm_campaign=daily&utm_source=hackathon" target="_blank">星云官网</a></li>
                         <li><a href="https://xingyun3d.csdn.net/" target="_blank">CSDN社区</a></li>
-                        <li><a href="#">开发文档</a></li>
+                        <li><a href="https://xingyun3d.com/developers/52-183?utm_campaign=daily&utm_source=hackathon" target="_blank">开发文档</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -357,6 +2634,95 @@
     </footer>
 
     <script>
+        // 页面加载时确保手机端菜单默认隐藏
+        (function() {
+            const navLinks = document.getElementById('nav-links');
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            if (navLinks) {
+                // 无论屏幕大小，先移除 active 类
+                navLinks.classList.remove('active');
+                // 如果是手机端，强制隐藏
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            }
+            if (mobileMenuToggle) {
+                mobileMenuToggle.classList.remove('active');
+            }
+        })();
+        
+        // DOM 加载完成后再次确保
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.getElementById('nav-links');
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            if (navLinks && window.innerWidth <= 768) {
+                navLinks.classList.remove('active');
+                navLinks.style.display = 'none';
+            }
+            if (mobileMenuToggle) {
+                mobileMenuToggle.classList.remove('active');
+            }
+        });
+        
+        // 手机端菜单切换
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        if (mobileMenuToggle && navLinks) {
+            mobileMenuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navLinks.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
+            });
+            
+            // 手机端下拉菜单点击切换
+            const dropdownButton = document.querySelector('.nav-item-dropdown button');
+            const dropdown = document.querySelector('.nav-item-dropdown');
+            
+            if (dropdownButton && dropdown && window.innerWidth <= 768) {
+                dropdownButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropdown.classList.toggle('active');
+                });
+            }
+            
+            // 点击导航链接后关闭菜单
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                        mobileMenuToggle.classList.remove('active');
+                        if (dropdown) dropdown.classList.remove('active');
+                    }
+                });
+            });
+            
+            // 点击外部区域关闭菜单
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    if (!navLinks.contains(e.target) && 
+                        !mobileMenuToggle.contains(e.target) &&
+                        navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenuToggle.classList.remove('active');
+                    }
+                    if (dropdown && !dropdown.contains(e.target) && dropdown.classList.contains('active')) {
+                        dropdown.classList.remove('active');
+                    }
+                }
+            });
+            
+            // 窗口大小改变时重置菜单状态
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navLinks.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
+                    if (dropdown) dropdown.classList.remove('active');
+                }
+            });
+        }
+        
         // Simple accordion for FAQ
         document.querySelectorAll('.faq-question').forEach(item => {
             item.addEventListener('click', event => {
@@ -376,6 +2742,54 @@
         // Hide answers by default
         document.querySelectorAll('.faq-answer').forEach(item => {
             item.style.display = 'none';
+        });
+
+        // 视频预览与模态框
+        const videoModal = document.getElementById('video-modal');
+        const videoModalIframe = document.getElementById('video-modal-iframe');
+        const videoModalClose = document.getElementById('video-modal-close');
+
+        document.querySelectorAll('.video-preview-wrap').forEach(wrap => {
+            wrap.addEventListener('click', function() {
+                const bvid = this.dataset.bvid;
+                const url = this.dataset.url;
+                if (bvid) {
+                    videoModalIframe.src = 'https://player.bilibili.com/player.html?bvid=' + bvid + '&high_quality=1&danmaku=0';
+                    videoModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                } else if (url) {
+                    window.open(url, '_blank');
+                }
+            });
+        });
+
+        function closeVideoModal() {
+            videoModal.classList.remove('active');
+            videoModalIframe.src = '';
+            document.body.style.overflow = '';
+        }
+
+        videoModalClose.addEventListener('click', closeVideoModal);
+        videoModal.addEventListener('click', function(e) {
+            if (e.target === videoModal) closeVideoModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && videoModal.classList.contains('active')) closeVideoModal();
+        });
+
+        // 视频封面：仅使用同源或非 B站 CDN 的 data-cover（B站 CDN 防盗链会 403）
+        document.querySelectorAll('.video-preview-wrap[data-bvid]').forEach(wrap => {
+            const coverUrl = wrap.dataset.cover;
+            const img = wrap.querySelector('img');
+            const placeholder = wrap.querySelector('.video-preview-placeholder');
+            const isBilibiliCdn = coverUrl && (coverUrl.includes('hdslb.com') || /bilibili\.com|bilivideo\.com/.test(coverUrl));
+            if (coverUrl && img && !isBilibiliCdn) {
+                img.src = coverUrl;
+                img.style.display = 'block';
+                if (placeholder) placeholder.style.display = 'none';
+            } else if (placeholder) {
+                placeholder.innerHTML = '<i class="fas fa-video"></i><span style="margin-top: 8px; font-size: 0.9rem; opacity: 0.7;">点击播放视频</span>';
+            }
         });
     </script>
 </body>
